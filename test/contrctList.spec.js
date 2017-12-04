@@ -16,4 +16,38 @@ describe('GET /contacts',()=>{
       done()
     })
   })
+
+})
+
+describe('POST /contacts',()=>{
+  it(' ',(done)=>{
+    request(app).post('/contacts')
+    .expect(201)
+    .then((res)=>{
+
+      done()
+    })
+  })
+})
+
+describe('PUT /contacts',()=>{
+  it(' ',(done)=>{
+    request(app).put('/contacts')
+    .expect(200)
+    .then((res)=>{
+
+      done()
+    })
+  })
+})
+
+describe('DELETE /contacts',()=>{
+  it(' ',(done)=>{
+    request(app).delete('/contacts')
+    .expect(204)
+    .then((res)=>{
+
+      done()
+    })
+  })
 })
