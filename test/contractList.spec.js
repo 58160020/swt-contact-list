@@ -71,11 +71,16 @@ describe('PUT /contacts',()=>{
 })
 
 describe('DELETE /contacts',()=>{
-  it(' ',(done)=>{
-    request(app).delete('/contacts')
+    it('should return status 204 and id don\'t macth id before delete',(done)=>{
+    request(app).delete('/contacts/9')
     .expect(204)
     .then((res)=>{
-
+      request(app).get('/contacts/9')
+            .then((res)=>{
+              let contact = res.body
+              expect(contact).toBeDefined()
+              expect(contact.id).not.toBe(9)
+            })
       done()
     })
   })
