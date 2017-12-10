@@ -60,11 +60,22 @@ describe('POST /contacts',()=>{
 })
 
 describe('PUT /contacts',()=>{
-  it(' ',(done)=>{
-    request(app).put('/contacts')
+  it('should return status 200 and value of id has been changed when send id ',(done)=>{
+    request(app).put('/contacts/0')
+    .send({id:12,name:'Sirikunya Jugsawed',email:'sirikunya@gamil',phone: '123-456-7890',url:'www.google.com' ,notes:'thai darma' })
     .expect(200)
     .then((res)=>{
-
+      request(app).get('/contacts/0')
+      .then((res)=>{
+        let contact = res.body
+        expect(contact).toBeDefined()
+        expect(contact.id).toBe(12)
+        expect(contact.name).toBe('Sirikunya Jugsawed')
+        expect(contact.email).toBe('sirikunya@gamil')
+        expect(contact.phone).toBe('123-456-7890')
+        expect(contact.url).toBe('www.google.com')
+        expect(contact.notes).toBe('thai darma')
+      })
       done()
     })
   })
