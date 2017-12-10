@@ -40,14 +40,16 @@ describe('GET /contacts',()=>{
 })
 
 describe('POST /contacts',()=>{
-  it(' ',(done)=>{
+  it('should return post value succeed and status 201 ',(done)=>{
     request(app).post('/contacts')
+    .send({id:12,name:'Sirikunya Jugsawed',email:'sirikunya@gamil',phone: '123-456-7890',url:'www.google.com' ,notes:'thai darma' })
     .expect(201)
     .then((res)=>{
-
+      
       done()
     })
   })
+
 })
 
 describe('PUT /contacts',()=>{
@@ -72,4 +74,4 @@ describe('DELETE /contacts',()=>{
   })
 })
 
-//testtttttmook
+//testttttttttttmook
