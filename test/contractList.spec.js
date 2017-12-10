@@ -45,10 +45,17 @@ describe('POST /contacts',()=>{
     .send({id:12,name:'Sirikunya Jugsawed',email:'sirikunya@gamil',phone: '123-456-7890',url:'www.google.com' ,notes:'thai darma' })
     .expect(201)
     .then((res)=>{
-      
-      done()
-    })
-  })
+      let contact = res.body
+     expect(contact).toBeDefined()
+     expect(contact.id).toBe(12)
+     expect(contact.name).toBe('Sirikunya Jugsawed')
+     expect(contact.email).toBe('sirikunya@gamil')
+     expect(contact.phone).toBe('123-456-7890')
+     expect(contact.url).toBe('www.google.com')
+     expect(contact.notes).toBe('thai darma')
+     done()
+   })
+ })
 
 })
 
